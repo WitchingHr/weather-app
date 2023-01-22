@@ -4,6 +4,7 @@
   --temp-color-cold: #60c2e1;
   --temp-circle-cold: var(--temp-color-cold), #3279cc;
   --temp-circle-shadow-cold: #0034f6;
+  --wind-gauge-shadow-cold: #3557b1;
 }
 
 @font-face {
@@ -29,27 +30,38 @@ body {
 .header {
   display: flex;
   align-items: center;
-  background-color: gray;
   height: 60px;
+  /* background: linear-gradient(180deg, #cddc39, #8bc34a); */
+  background: linear-gradient(180deg, #ffffff, #c5cae9);
+  box-shadow: 0px 0px 8px 0px black;
+  z-index: 1;
 }
 
 .search-container {
   display: flex;
   height: 40px;
   padding: 10px;
+  flex: 1;
 }
 
 input.search-bar {
+  border-radius: 6px;
+  border: none;
+  box-shadow: inset 0px 0px 3px 0px black;
+  padding-left: 5px;
+  font-size: 24px;
+  flex: 1;
+  /* background-color: #ffc107; */
+  background-color: #81d4fa82;
 }
 
 button.search-button {
-  width: 40px;
-  background-color: #3ec93e;
+  display: none;
 }
 
 .main {
   display: grid;
-  grid-template-rows: 2fr 5fr 5fr;
+  grid-template-rows: 2fr 4fr 5fr;
   height: 100%;
   background: var(--background-cold);
 }
@@ -172,6 +184,7 @@ button.search-button {
   width: 70px;
   position: relative;
   transform: rotate(1deg);
+  box-shadow: inset 0 0 20px 0px var(--wind-gauge-shadow-cold);
 }
 
 .wind-triangle {
