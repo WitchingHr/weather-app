@@ -10,10 +10,15 @@
 <body>
   <div class="content">
     <div class="header">
-      <div class="search-container">
-        <input type="text" name="" id="" class="search-bar" placeholder="Enter location" minlength="1" maxlength="50">
+      <form class="search-container">
+        <input  type="text" name="" id="" 
+                class="search-bar" 
+                placeholder="Enter location" 
+                minlength="1" maxlength="50"
+                pattern="[A-Za-z ]+"
+                required>
         <button class="search-button"></button>
-      </div>
+      </form>
     </div>
     <div class="main">
       <div class="city-info">
