@@ -42,7 +42,7 @@ async function getData(url) {
     mode: 'cors',
   });
   const data = await response.json();
-  // console.log(data);
+  // console.log(data); DELETE ME...............................
   const sorted = sortData(data);
   pubsub.publish('Data', sorted);
 }
@@ -58,5 +58,3 @@ function searchByEnter(e) {
 }
 
 window.addEventListener('keydown', searchByEnter);
-
-console.log('api'); // DELETE ME

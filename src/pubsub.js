@@ -24,5 +24,3 @@ const pubsub = {
 };
 
 export default pubsub;
-
-console.log('pubsub'); // DELETE ME
