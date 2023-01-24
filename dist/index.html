@@ -17,9 +17,22 @@
                 minlength="1" maxlength="50"
                 pattern="[A-Za-z ]+"
                 required>
-        <button class="search-button"></button>
       </form>
+      <span class="settings-icon"></span>
     </div>
+    <div class="settings-modal">
+      <div class="settings-container">
+        <div class="units">Units</div>
+          <div class="slider-container">
+            <span class="fc">°F</span>
+            <label for="temp" class="switch">
+              <input type="checkbox" name="temp" id="temp">
+              <span class="slider round"></span>
+            </label>
+            <span class="fc">°C</span>
+          </div>
+        </div>
+      </div>
     <div class="main">
       <div class="city-info">
         <div class="city-name">Merrimack</div>

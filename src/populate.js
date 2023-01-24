@@ -13,6 +13,15 @@ function populateCityInfo(data) {
   cityName.innerHTML = data.name;
 }
 
+let f = true;
+pubsub.subscribe('Unit', (unit) => {
+  if (unit === 'C') {
+    f = false;
+  } else {
+    f = true;
+  }
+});
+
 function convertTempF(temp) {
   const num = 1.8 * (temp - 273) + 32;
   return Math[num < 0 ? 'ceil' : 'floor'](num); // truncate decimals
@@ -25,13 +34,20 @@ function convertTempC(temp) {
 
 function populateTemps(data) {
   const high = document.querySelector('.high');
-  high.innerHTML = `${convertTempF(data.hi)}°`;
   const low = document.querySelector('.low');
-  low.innerHTML = `${convertTempF(data.low)}°`;
   const temp = document.querySelector('.temp');
-  temp.innerHTML = `${convertTempF(data.temp)}`;
   const feels = document.querySelector('.feels-temp');
-  feels.innerHTML = `${convertTempF(data.feels)}`;
+  if (f) {
+    high.innerHTML = `${convertTempF(data.hi)}°`;
+    low.innerHTML = `${convertTempF(data.low)}°`;
+    temp.innerHTML = `${convertTempF(data.temp)}`;
+    feels.innerHTML = `${convertTempF(data.feels)}°`;
+  } else {
+    high.innerHTML = `${convertTempC(data.hi)}°`;
+    low.innerHTML = `${convertTempC(data.low)}°`;
+    temp.innerHTML = `${convertTempC(data.temp)}`;
+    feels.innerHTML = `${convertTempC(data.feels)}°`;
+  }
 }
 
 function convertWindDeg(deg) {
