@@ -13,6 +13,7 @@ function populateCityInfo(data) {
   cityName.innerHTML = data.name;
 }
 
+// Sets temperature unit from toggle switch
 let f = true;
 pubsub.subscribe('Unit', (unit) => {
   if (unit === 'C') {

@@ -42,9 +42,28 @@ async function getData(url) {
     mode: 'cors',
   });
   const data = await response.json();
-  // console.log(data); DELETE ME...............................
   const sorted = sortData(data);
   pubsub.publish('Data', sorted);
+}
+
+const homepage = document.querySelector('.homepage');
+const loading = document.querySelector('.loading');
+const main = document.querySelector('.main');
+
+// Alternates to loading screen while fetching
+async function search(url) {
+  if (!homepage.classList.contains('hidden')) {
+    // homepage only visible on init load
+    homepage.classList.toggle('hidden');
+  }
+  if (!main.classList.contains('hidden')) {
+    // hides main if already looking at weather
+    main.classList.toggle('hidden');
+  }
+  loading.classList.toggle('hidden');
+  await getData(url);
+  loading.classList.toggle('hidden');
+  main.classList.toggle('hidden');
 }
 
 function searchByEnter(e) {
@@ -53,7 +72,7 @@ function searchByEnter(e) {
   const validity = form.reportValidity();
   if (validity) {
     const url = getURL(searchBar.value);
-    getData(url);
+    search(url);
   }
 }
 
