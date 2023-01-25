@@ -9,7 +9,7 @@ function getURL(value) {
   return `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=643ee83fd07e5e22fcd7e40a78fd4672`;
 }
 
-function Weather(name, timezone, temp, hi, low, feels, main, wind, pressure) {
+function Weather(name, timezone, temp, hi, low, feels, main, wind, pressure, humidity, visibility) {
   return {
     name,
     timezone,
@@ -20,6 +20,8 @@ function Weather(name, timezone, temp, hi, low, feels, main, wind, pressure) {
     main,
     wind,
     pressure,
+    humidity,
+    visibility,
   };
 }
 
@@ -34,11 +36,12 @@ function sortData(obj) {
     obj.weather[0].main,
     obj.wind,
     obj.main.pressure,
+    obj.main.humidity,
+    obj.visibility,
   );
 }
 
 async function getData(url) {
-  let data;
   try {
     const response = await fetch(url, {
       mode: 'cors',
@@ -46,11 +49,11 @@ async function getData(url) {
     if (!response.ok) {
       throw new Error('Oops, city not found');
     }
-    data = await response.json();
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.log(error);
   }
-  return sortData(data);
 }
 
 const homepage = document.querySelector('.homepage');
@@ -74,8 +77,8 @@ async function search(url) {
   }
   loading.classList.toggle('hidden');
   try {
-    const sorted = await getData(url);
-    pubsub.publish('Data', sorted);
+    const dataObj = await getData(url);
+    pubsub.publish('Data', sortData(dataObj));
     loading.classList.toggle('hidden');
     main.classList.toggle('hidden');
   } catch {

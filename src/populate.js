@@ -85,12 +85,16 @@ function convertWindDeg(deg) {
   return cardinal;
 }
 
+function convertWind(data) {
+  return data * 1.944;
+}
+
 function populateWind(data) {
   const direction = document.querySelector('.wind-direction');
   const speed = document.querySelector('.wind-speed');
   const gauge = document.querySelector('.wind-gauge');
   direction.innerHTML = convertWindDeg(data.wind.deg);
-  speed.innerHTML = Math.floor(data.wind.speed);
+  speed.innerHTML = Math.floor(convertWind(data.wind.speed));
   gauge.style.transform = `rotate(${Math.floor(data.wind.deg)}deg)`;
 }
 
@@ -154,7 +158,10 @@ function getTime(tz) {
   let day = d.getUTCDay();
   let month = d.getUTCMonth();
   let hh = d.getUTCHours() + (tz / 3600);
-  const year = d.getFullYear;
+  if (hh < 0) {
+    hh += 24;
+  }
+  const year = d.getFullYear();
   const mm = d.getMinutes();
   const months = [
     'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -206,6 +213,27 @@ function populateDatetime(data) {
   time.innerHTML = t;
 }
 
+function populateVisibility(data) {
+  const meter = document.getElementById('visibility');
+  meter.setAttribute('value', `${data.visibility}`);
+  const popup = document.querySelector('.vis-pop');
+  popup.innerHTML = `${data.visibility}m`;
+}
+
+function populateHumidity(data) {
+  const meter = document.getElementById('humidity');
+  meter.setAttribute('value', `${data.humidity}`);
+  const popup = document.querySelector('.hum-pop');
+  popup.innerHTML = `${data.humidity}%`;
+}
+
+function populatePressure(data) {
+  const meter = document.getElementById('pressure');
+  meter.setAttribute('value', `${data.pressure}`);
+  const popup = document.querySelector('.pres-pop');
+  popup.innerHTML = `${data.pressure}hPa`;
+}
+
 function populate(data) {
   console.log(data); // DELETE ME..........................
   populateCityInfo(data);
@@ -213,6 +241,9 @@ function populate(data) {
   populateTemps(data);
   populateWeatherStatus(data);
   populateWind(data);
+  populateVisibility(data);
+  populateHumidity(data);
+  populatePressure(data);
 }
 
 pubsub.subscribe('Data', (data) => {

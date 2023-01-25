@@ -94,8 +94,43 @@
               </div>
               <div class="wind-data">
                 <div class="wind-direction">N</div>
-                <div class="wind-speed">0</div>
+                <div class="wind-speed" title="wind speed in knots">0</div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div class="weather-2">
+          <div class="vis">
+            <div class="vhp-container">
+              <fieldset>
+                <legend>VISIBILITY</legend>
+                <meter id="visibility" min="0" max="10000" optimum="10000"
+                  low="3000" high="9000" value="">
+                </meter>
+                <div class="popup vis-pop"></div>
+              </fieldset>
+            </div>
+          </div>
+          <div class="humidity">
+            <div class="vhp-container">
+              <fieldset>
+                <legend>HUMIDITY</legend>
+                <meter id="humidity" min="0" max="100" optimum="0"
+                  low="40" high="65" value="">
+                </meter>
+                <div class="popup hum-pop">75%</div>
+              </fieldset>
+            </div>
+          </div>
+          <div class="pressure">
+            <div class="vhp-container">
+              <fieldset>
+                <legend>PRESSURE</legend>
+                <meter id="pressure" min="950" max="1050" optimum="1050"
+                  low="995" high="1015" value="">
+                </meter>
+                <div class="popup pres-pop"></div>
+              </fieldset>
             </div>
           </div>
         </div>
