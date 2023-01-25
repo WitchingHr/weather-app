@@ -148,9 +148,68 @@ function populateWeatherStatus(data) {
   weatherStatus.innerHTML = weatherName;
 }
 
+function getTime(tz) {
+  const d = new Date();
+  let date = d.getUTCDate();
+  let day = d.getUTCDay();
+  let month = d.getUTCMonth();
+  let hh = d.getUTCHours() + (tz / 3600);
+  const year = d.getFullYear;
+  const mm = d.getMinutes();
+  const months = [
+    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+  ];
+  const days = [
+    'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat',
+  ];
+  if (hh > 24) {
+    hh -= 24;
+    date += 1;
+    if (day === 6) {
+      day = 0;
+    } else {
+      day += 1;
+    }
+    const leap = () => ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
+    if (day === 30 && month === 1 && leap) {
+      day = 1;
+      month = 2;
+    }
+    if (day === 29 && month === 1 && !leap) {
+      day = 1;
+      month = 2;
+    }
+    const thirty = [4, 6, 9, 11];
+    if (day === 31 && thirty.some((m) => m === month)) {
+      day = 1;
+      month += 1;
+    }
+    if (day === 32 && month !== 12) {
+      day = 1;
+      month += 1;
+    }
+    if (day === 32 && month === 12) {
+      day = 1;
+      month = 0;
+    }
+  }
+  return [`${days[day]} ${months[month]} ${date}`, `${hh}:${mm}`];
+}
+
+function populateDatetime(data) {
+  const date = document.querySelector('.date');
+  const time = document.querySelector('.time');
+  const dateArray = getTime(data.timezone);
+  const [d, t] = dateArray;
+  date.innerHTML = d;
+  time.innerHTML = t;
+}
+
 function populate(data) {
   console.log(data); // DELETE ME..........................
   populateCityInfo(data);
+  populateDatetime(data);
   populateTemps(data);
   populateWeatherStatus(data);
   populateWind(data);

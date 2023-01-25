@@ -38,17 +38,25 @@ function sortData(obj) {
 }
 
 async function getData(url) {
-  const response = await fetch(url, {
-    mode: 'cors',
-  });
-  const data = await response.json();
-  const sorted = sortData(data);
-  pubsub.publish('Data', sorted);
+  let data;
+  try {
+    const response = await fetch(url, {
+      mode: 'cors',
+    });
+    if (!response.ok) {
+      throw new Error('Oops, city not found');
+    }
+    data = await response.json();
+  } catch (error) {
+    console.log(error);
+  }
+  return sortData(data);
 }
 
 const homepage = document.querySelector('.homepage');
 const loading = document.querySelector('.loading');
 const main = document.querySelector('.main');
+const errorpage = document.querySelector('.error');
 
 // Alternates to loading screen while fetching
 async function search(url) {
@@ -60,19 +68,30 @@ async function search(url) {
     // hides main if already looking at weather
     main.classList.toggle('hidden');
   }
+  if (!errorpage.classList.contains('hidden')) {
+    // hides errorpage if already looking at weather
+    errorpage.classList.toggle('hidden');
+  }
   loading.classList.toggle('hidden');
-  await getData(url);
-  loading.classList.toggle('hidden');
-  main.classList.toggle('hidden');
+  try {
+    const sorted = await getData(url);
+    pubsub.publish('Data', sorted);
+    loading.classList.toggle('hidden');
+    main.classList.toggle('hidden');
+  } catch {
+    loading.classList.toggle('hidden');
+    errorpage.classList.toggle('hidden');
+  }
 }
 
 function searchByEnter(e) {
-  if (document.activeElement === searchBar && e.key !== 'Enter') return;
-  e.preventDefault();
-  const validity = form.reportValidity();
-  if (validity) {
-    const url = getURL(searchBar.value);
-    search(url);
+  if (document.activeElement === searchBar && e.key === 'Enter') {
+    e.preventDefault();
+    const validity = form.reportValidity();
+    if (validity) {
+      const url = getURL(searchBar.value);
+      search(url);
+    }
   }
 }
 
