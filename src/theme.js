@@ -13,7 +13,6 @@ function changeTheme(data) {
 pubsub.subscribe('Data', changeTheme);
 
 const meters = document.querySelectorAll('meter');
-const popups = document.querySelectorAll('.popup');
 const fields = document.querySelectorAll('fieldset');
 
 meters.forEach((meter) => {
@@ -21,14 +20,6 @@ meters.forEach((meter) => {
     e.stopPropagation();
     const popup = e.target.nextElementSibling;
     popup.classList.toggle('popup-animate');
-  });
-});
-
-popups.forEach((popup) => {
-  popup.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const thisPopup = e.target;
-    thisPopup.classList.toggle('popup-animate');
   });
 });
 

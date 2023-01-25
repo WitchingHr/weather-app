@@ -481,6 +481,7 @@ fieldset {
   justify-content: center;
   border: 1px solid white;
   position: relative;
+  cursor: pointer;
 }
 
 legend {
@@ -500,6 +501,7 @@ legend {
   background: #646464;
   border-radius: 5px;
   opacity: 0;
+  pointer-events: none;
 }
 
 .popup-animate {
@@ -546,22 +548,46 @@ meter::-webkit-meter-optimum-value {
   background: linear-gradient(to bottom, rgb(55, 255, 0), rgb(0, 255, 8));
 }
 
+meter::-webkit-meter-optimum-value:hover {
+  background: linear-gradient(to bottom, rgb(51, 237, 0), rgb(0, 237, 8));
+}
+
 meter:-moz-meter-optimum::-moz-meter-bar {
   background: linear-gradient(to bottom, rgb(55, 255, 0), rgb(0, 255, 8));
+}
+
+meter:-moz-meter-optimum::-moz-meter-bar:hover {
+  background: linear-gradient(to bottom, rgb(51, 237, 0), rgb(0, 237, 8));
 }
 
 meter::-webkit-meter-suboptimum-value {
   background: linear-gradient(to bottom, rgb(255, 225, 0), yellow);
 }
 
+meter::-webkit-meter-suboptimum-value:hover {
+  background: linear-gradient(to bottom, rgb(236, 208, 0), rgb(233, 233, 0));
+}
+
 meter:-moz-meter-sub-optimum::-moz-meter-bar {
   background: linear-gradient(to bottom, rgb(255, 225, 0), yellow);
+}
+
+meter:-moz-meter-sub-optimum::-moz-meter-bar:hover {
+  background: linear-gradient(to bottom, rgb(236, 208, 0), rgb(233, 233, 0));
 }
 
 meter::-webkit-meter-even-less-good-value {
   background: linear-gradient(to bottom, rgb(224, 0, 0), rgb(255, 0, 0));
 }
 
+meter::-webkit-meter-even-less-good-value:hover {
+  background: linear-gradient(to bottom, rgb(206, 1, 1), rgb(236, 0, 0));
+}
+
 meter:-moz-meter-sub-sub-optimum::-moz-meter-bar {
   background: linear-gradient(to bottom, rgb(224, 0, 0), rgb(255, 0, 0));
+}
+
+meter:-moz-meter-sub-sub-optimum::-moz-meter-bar:hover {
+  background: linear-gradient(to bottom, rgb(206, 1, 1), rgb(236, 0, 0));
 }
