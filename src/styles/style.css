@@ -591,3 +591,35 @@ meter:-moz-meter-sub-sub-optimum::-moz-meter-bar {
 meter:-moz-meter-sub-sub-optimum::-moz-meter-bar:hover {
   background: linear-gradient(to bottom, rgb(206, 1, 1), rgb(236, 0, 0));
 }
+
+@media screen and (min-width: 768px) {
+  .main-content {
+    display: grid;
+    grid-template-columns: 15% 1fr 1fr 15%;
+    grid-template-rows: 50px 1fr 50px 3fr;
+  }
+
+  .city-info {
+    grid-row-start: 2;
+    grid-column-start: 2;
+  }
+
+  .city-name {
+    font-size: 72px;
+    overflow-wrap: anywhere;
+  }
+
+  .datetime {
+    font-size: 40px;
+  }
+
+  .weather {
+    grid-row-start: 2;
+    grid-column-start: 3;
+  }
+
+  .weather-2 {
+    grid-row-start: 4;
+    grid-column-start: 3;
+  }
+}
