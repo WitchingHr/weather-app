@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script defer src="main.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div class="content">
+    <div class="header">
+      <form class="search-container">
+        <input  type="text" name="" id="" 
+                class="search-bar" 
+                placeholder="Enter location" 
+                minlength="1" maxlength="50"
+                pattern="[A-Za-z ]+"
+                required>
+      </form>
+      <span class="settings-icon"></span>
+    </div>
+    <div class="settings-modal">
+      <div class="settings-container">
+        <div class="units">Units</div>
+          <div class="slider-container">
+            <span class="fc">°F</span>
+            <label for="temp" class="switch">
+              <input type="checkbox" name="temp" id="temp">
+              <span class="slider round"></span>
+            </label>
+            <span class="fc">°C</span>
+          </div>
+        </div>
+      </div>
+    <div class="homepage">
+      <div class="homepage-content welcome">
+        <div class="prompt-container">
+          <div class="prompt">Search for a city to see it's current weather</div>
+        </div>
+      </div>
+    </div>
+    <div class="error hidden">
+      <div class="error-content welcome">
+        <div class="prompt-container">
+          <div class="prompt">Oops. City not found</div>
+        </div>
+      </div>
+    </div>
+    <div class="loading hidden">
+      <div class="loading-content welcome">
+        <div class="loading-container">
+          <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="main hidden">
+      <div class="main-content">
+        <div class="city-info">
+          <div class="city-name">Merrimack</div>
+          <div class="datetime">
+            <div class="date">Fri Jan 20</div>
+            <div class="time">16:00</div>
+          </div>
+        </div>
+        <div class="weather">
+          <div class="temp-circle-container">
+            <div class="temp-circle">
+              <div class="high-low">
+                <span class="high"></span>
+                <span class="separator">|</span>
+                <span class="low"></span>
+              </div>
+              <div class="current-temp">
+                <span class="temp"></span>
+                <span class="temp-unit">°F</span>
+              </div>
+              <div class="temp-feels-like">
+                <span class="like">LIKE</span>
+                <span class="feels-temp"></span>
+              </div>
+            </div>
+          </div>
+          <div class="windage-container">
+            <div class="windage">
+              <div class="wind-gauge">
+                <div class="wind-triangle"></div>
+              </div>
+              <div class="wind-data">
+                <div class="wind-direction">N</div>
+                <div class="wind-speed" title="wind speed in knots">0</div>
+              </div>
+            </div>
+          </div>
+          <div class="status">
+            <div class="icon-container">
+              <div class="icon"></div>
+            </div>
+            <div class="weather-status">Cloudy</div>
+          </div>
+        </div>
+        <div class="weather-2">
+          <div class="vis">
+            <div class="vhp-container">
+              <fieldset>
+                <legend>VISIBILITY</legend>
+                <meter id="visibility" min="0" max="10000" optimum="10000"
+                  low="3000" high="9000" value="">
+                </meter>
+                <div class="popup vis-pop"></div>
+              </fieldset>
+            </div>
+          </div>
+          <div class="humidity">
+            <div class="vhp-container">
+              <fieldset>
+                <legend>HUMIDITY</legend>
+                <meter id="humidity" min="0" max="100" optimum="0"
+                  low="40" high="65" value="">
+                </meter>
+                <div class="popup hum-pop">75%</div>
+              </fieldset>
+            </div>
+          </div>
+          <div class="pressure">
+            <div class="vhp-container">
+              <fieldset>
+                <legend>PRESSURE</legend>
+                <meter id="pressure" min="950" max="1050" optimum="1050"
+                  low="995" high="1015" value="">
+                </meter>
+                <div class="popup pres-pop"></div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
