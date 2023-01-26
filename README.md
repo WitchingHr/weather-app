@@ -1,5 +1,9 @@
 # Weather App
-
+<p align=middle>
+<img width="390" alt="Screenshot 2023-01-26 at 4 18 21 PM" src="https://user-images.githubusercontent.com/41353202/214952958-a690b66f-909b-49e7-aeb9-9cbf6d89ba3a.png">
+<img width="390" alt="Screenshot 2023-01-26 at 4 19 37 PM" src="https://user-images.githubusercontent.com/41353202/214952975-7e2d29dd-db97-447c-b0ac-582038958454.png">
+<img width="780" alt="Screenshot 2023-01-26 at 4 33 12 PM" src="https://user-images.githubusercontent.com/41353202/214955483-a46ec6d1-2d20-4c30-a0c0-9d8ab65646a8.png">
+</p>
 
 ## Abstract
 Weather App created for The Odin Project curriculum. 
