@@ -235,7 +235,7 @@ function populatePressure(data) {
 }
 
 function populate(data) {
-  console.log(data); // DELETE ME..........................
+  // console.log(data);
   populateCityInfo(data);
   populateDatetime(data);
   populateTemps(data);
